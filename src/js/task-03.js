@@ -18,9 +18,8 @@ galleryList.style.display = 'flex';
 galleryList.style.flexWrap = 'wrap';
 galleryList.style.gap = '10px';
 
-images.forEach(element => {
-  const pasteImg = galleryList.insertAdjacentHTML(
-    'afterbegin',
-    `<li><img src='${element.url}' alt='${element.alt}' class='img'/></li>`
-  );
-});
+const markup = images
+  .map(image => `<li><img src='${image.url}' alt='${image.alt}' class='img'/></li>`)
+  .join('');
+
+galleryList.insertAdjacentHTML('beforeend', markup);
